@@ -1,0 +1,9 @@
+mnist_112/
+mnist_2x/
+mnist_4x/
+mnist_size_val/
+mnist_sized/
+old_weights/
+weights/
+*.tar.gz
+*.tar
