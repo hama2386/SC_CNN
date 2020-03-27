@@ -388,7 +388,7 @@ class ResNet_for_cifar(nn.Module):
         self.bn1 = nn.BatchNorm2d(16)
         self.relu = nn.ReLU(inplace = True)
         
-        self.layer1 = self._make_layer(block[0],num_blocks[0],16,16,SC=SCblock[0])
+        self.layer1 = self._make_layer(block[0],num_blocks[0],16,16,SC=SCblock[0],downsample=False)
         self.layer2 = self._make_layer(block[1],num_blocks[1],16,32,SC=SCblock[1])
         self.layer3 = self._make_layer(block[2],num_blocks[2],32,64,SC=SCblock[2])
         
@@ -434,3 +434,6 @@ def SCResNet50():
 
 def ResNet_cifar():
     return ResNet_for_cifar([False,False,False],[2,2,2])
+
+def SCResNet_cifar():
+    return ResNet_for_cifar([True,True,True],[2,2,2])
