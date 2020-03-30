@@ -315,7 +315,7 @@ class SCBasicRes(nn.Module):
         return out
 
 class ResNet_or_SC(nn.Module):
-    def __init__(self,SCblock,num_blocks):
+    def __init__(self,SCblock,num_blocks,num_classes=10):
         super(ResNet_or_SC, self).__init__()
         
         block = []
@@ -336,7 +336,7 @@ class ResNet_or_SC(nn.Module):
         self.layer4 = self._make_layer(block[3],num_blocks[3],1024,2048,SC=True)
         
         self.avgpool = nn.AdaptiveAvgPool2d((1,1))
-        self.fc = nn.Linear(2048,10)
+        self.fc = nn.Linear(2048,num_classes)
         
     def _make_layer(self,block,num_layer_blocks,in_channels,out_channels,SC=False):
         
@@ -363,13 +363,18 @@ class ResNet_or_SC(nn.Module):
         #print(x.size())
             
         x = self.layer1(x)
+        #print(x.size())
         x = self.layer2(x)
+        #print(x.size())
         x = self.layer3(x)
+        #print(x.size())
         x = self.layer4(x)
+        #print(x.size())
         
         x = self.avgpool(x)
         x = torch.flatten(x,1)
         x = self.fc(x)
+        #print(x.size())
         
         return x
     
@@ -429,8 +434,8 @@ class ResNet_for_cifar(nn.Module):
         
         return x
         
-def SCResNet50():
-    return ResNet_or_SC([True,True,True,True],[3,4,6,3])
+def SCResNet50(num_classes=10):
+    return ResNet_or_SC([True,True,True,True],[3,4,6,3],num_classes)
 
 def ResNet_cifar():
     return ResNet_for_cifar([False,False,False],[2,2,2])
