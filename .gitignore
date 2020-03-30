@@ -5,3 +5,6 @@ old_weights/
 weights/
 *.tar.gz
 *.tar
+coco/
+coco_dataset/
+cropped_coco/
