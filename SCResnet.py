@@ -437,6 +437,9 @@ class ResNet_for_cifar(nn.Module):
 def SCResNet50(num_classes=10):
     return ResNet_or_SC([True,True,True,True],[3,4,6,3],num_classes)
 
+def ResNet50(num_classes=10):
+    return ResNet_or_SC([False,False,False,False],[3,4,6,3],num_classes)
+
 def ResNet_cifar():
     return ResNet_for_cifar([False,False,False],[2,2,2])
 
