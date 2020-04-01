@@ -328,7 +328,7 @@ class ResNet_or_SC(nn.Module):
         self.conv1 = nn.Conv2d(3,64,kernel_size=7,stride=2,padding=3,bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace = True)
-        self.maxpool = nn.MaxPool2d(kernel_size=3,stride=2,padding=1)
+        #self.maxpool = nn.MaxPool2d(kernel_size=3,stride=2,padding=1)
         
         self.layer1 = self._make_layer(block[0],num_blocks[0],64,256,SC=True)
         self.layer2 = self._make_layer(block[1],num_blocks[1],256,512,SC=True)
