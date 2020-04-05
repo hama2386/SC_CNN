@@ -8,3 +8,4 @@ weights/
 coco/
 coco_dataset/
 cropped_coco/
+sampled_cropped_coco/
